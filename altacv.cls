@@ -103,6 +103,7 @@
 \let\ratingmarker\cvRatingMarker  % for backward compatibility
 \newcommand{\cvDateMarker}{\faCalendar[regular]}
 \newcommand{\cvLocationMarker}{\faMapMarker}
+\newcommand{\cvAwardMarker}{\faAward}
 \newcommand{\locationname}{Location}
 \newcommand{\datename}{Date}
 
@@ -146,7 +147,7 @@
 %% v1.6: Use accsupp so that when copying/pasting the icon from PDF to a text
 %%       file, the icon name is pasted
 %% v1.7: Some tweaks/corrections so that accsupp is for icons only
-%% v1.7.1: Bugfix to support some symbol commands e.g. academicons commands 
+%% v1.7.1: Bugfix to support some symbol commands e.g. academicons commands
 \ExplSyntaxOn
 \NewDocumentCommand{\printinfo}{m m o}{%
   \IfNoValueTF{#3}{%
@@ -268,7 +269,8 @@
     {\namefont\color{name}\MakeUppercase{\@name}\par}
     \medskip
     {\taglinefont\color{tagline}\@tagline\par}
-    \medskip
+    %\medskip
+    \bigskip
     {\personalinfofont\@personalinfo\par}
     \end{minipage}\hfill%
     \altacv@right@photos\par%
@@ -310,13 +312,32 @@
   \medskip\normalsize
 }
 
+\newcommand{\cvedu}[4]{%
+  {\large\color{emphasis}#1\par}
+  \smallskip\normalsize
+  \ifstrequal{#2}{}{}{
+  \textbf{\color{accent}#2}\par
+  \smallskip}
+  \ifstrequal{#3}{}{}{%
+    {\small\makebox[0.5\linewidth][l]%
+      {\BeginAccSupp{method=pdfstringdef,ActualText={\datename:}}\cvDateMarker\EndAccSupp{}%
+      ~#3}%
+    }}%
+  \ifstrequal{#4}{}{}{%
+    {\small\makebox[0.5\linewidth][l]%
+      {\BeginAccSupp{method=pdfstringdef,ActualText={\locationname:}}\cvAwardMarker\EndAccSupp{}%
+        ~#4}%
+    }}\par
+  \medskip\normalsize
+}
+
 % v1.7: adds accsupp for the icon as well
 \newcommand{\cvachievement}[3]{%
   \begin{tabularx}{\linewidth}{@{}p{2em} @{\hspace{1ex}} >{\raggedright\arraybackslash}X@{}}
   \multirow{2}{*}{\Large\color{accent}\BeginAccSupp{method=escape,ActualText={#1: }}#1\EndAccSupp{}} & \bfseries\textcolor{emphasis}{#2}\\
   & #3
   \end{tabularx}%
-  \smallskip
+  \medskip
 }
 
 \newcommand{\cvtag}[1]{%
@@ -394,10 +415,12 @@
 
 \newcommand{\cvref}[3]{%
   \smallskip
-  \textcolor{emphasis}{\textbf{#1}}\par
+  \textcolor{emphasis}{\textbf{#1}}\par\medskip
   \begin{description}[font=\color{accent},style=multiline,leftmargin=1.35em,align=left]
-  \item[\small\normalfont\emailsymbol] #2
-  \item[\small\normalfont\mailaddresssymbol] #3
+  \item[\small\normalfont\faSuitcase] #2
+  \item[\small\normalfont\emailsymbol] #3
+
+
   \end{description}
 %   \medskip
 }
