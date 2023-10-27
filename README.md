@@ -3,9 +3,12 @@
 Credit to author of the repo this is a fork of:
 - [LianTze Lim](https://github.com/liantze) (liantze@gmail.com)
 
-## The CV uses placeholders
+## Please note that...
 
-Some information I don't want to share in a public repo to I inserted a couple of placeholders!
+- ...the CV uses placeholders for information I don't like to share on a public repository!
+- ...it is made to be rendered in [Overleaf](https://www.overleaf.com/)
+
+---
 
 ## Important info by the original author
 
