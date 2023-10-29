@@ -24,6 +24,9 @@
 % The paracol package lets you typeset columns of text in parallel
 \usepackage{paracol}
 
+% Package to frame content
+\usepackage{framed}
+
 % Change the font if you want to, depending on whether
 % you're using pdflatex or xelatex/lualatex
 % WHEN COMPILING WITH XELATEX PLEASE USE
@@ -41,7 +44,11 @@
   \renewcommand{\familydefault}{\sfdefault}
 \fi
 
+% Package for multiple columns withi paracol (cannot be nested)
 \usepackage{multicol}
+% Package for nice rules between columns (see REFERENCE section)
+\usepackage{multicolrule}
+\usepackage{tikz}
 
 % Change the colours if you want to
 \definecolor{SlateGrey}{HTML}{2E2E2E}
@@ -82,21 +89,39 @@
 % \renewcommand{\locationname}{Ubicación}
 % \renewcommand{\datename}{Fecha}
 
+
+%% Use (and optionally edit if necessary) this .tex if you
+%% want to use an author-year reference style like APA(6)
+%% for your publication list
+% \input{pubs-authoryear.tex}
+
+%% Use (and optionally edit if necessary) this .tex if you
+%% want an originally numerical reference style like IEEE
+%% for your publication list
+%\input{pubs-num.tex}
+
+%% sample.bib contains your publications
+%\addbibresource{sample.bib}
+
 \begin{document}
 \name{Christoph Koch\textnormal{\huge,~D\MakeLowercase{r. rer. nat}}}
 \tagline{Research Data Scientist with a background in Cognitive Neuroscience}
 %% You can add multiple photos on the left or right
-% \photoR{2.8cm}{PLACEHOLDER-PHOTO-R}
-% \photoL{2.5cm}{PLACEHOLDER-PHOTO-L}
+% \photoR{2.8cm}{photo-wittkuhn-uhh}
+% \photoL{2.5cm}{Yacht_High,Suitcase_High}
 \personalinfo{%
   % Not all of these are required!
-  \email{placeholder.mail@mail.de}
-  \phone{+XX XXXX XXX XXXX}
-  %\mailaddress{PLACEHOLDER-ADDRESS}
+  \email{christoph.koch1992@gmail.com}
+  \phone{+49 1578 251 9078}
+  %\mailaddress{Von-Melle-Park 5, D-20146 Hamburg, Germany}
   \location{Berlin, Germany}
-  %\homepage{PLACEHOLDER-WEBADDRESS}
+  %\homepage{www.lennartwittkuhn.com}
   \github{koch-means-cook}
-  \linkedin{place-holder-li}
+  \linkedin{dr-christoph-koch}
+  %\twitter{@koch_means_cook}
+  %\printinfo{\faMastodon}{@koch_means_cook@fediscience}[https://fediscience.org/@koch_means_cook]
+  %\orcid{0000-0003-2966-6888}
+  % \printinfo{\faGraduationCap}{Google Scholar}[https://scholar.google.com/citations?user=GXvJB1kAAAAJ&hl=en]
   %% You can add your own arbitrary detail with
   %% \printinfo{symbol}{detail}[optional hyperlink prefix]
   % \printinfo{\faPaw}{Hey ho!}[https://example.com/]
@@ -129,45 +154,66 @@
 % break across pages if things get too long.
 \begin{paracol}{2}
 
-  % ABOUT ME section
   \cvsection{About Me}
+  %\cvachievement{\faChartArea}{Research Data Scientist}{5+ years experience in data analysis \& management, advanced statistics, machine learning \& data visualization}
   \cvachievement{\faChartArea}{Research Data Scientist}{5+ years experience in preprocessing, managing, analyzing \& visualizing data sets, advanced statistics \& machine learning}
   \cvachievement{\faLaptopCode}{Flexible and expanding toolkit}{Multiple programming languages, Git-based version control and collaboration, high performance computing \& containers}
   \cvachievement{\faUsers}{Project autonomy and teamwork}{Main responsibility for three long-term projects under minimal oversight \& various expert roles in team projects}
   \cvachievement{\faCubes}{Experience with highly versatile and challenging data sets}{Including data tables of human monetary decisions and learning, 4D-image processing of brain scans \& human navigation in virtual environments---all in multiple demographic groups}
-  % Add achievement point using
-  %\cvachievement{SYMBOL}{DESCRIPTION}
+  %\faStreetView
+  %\faUserFriends
+  %\faUsers
+  %\faWalking
+  %\cvachievement{\faBrain}{Cognitive Neuroscientist \& Psychologist}{Comprehensive understanding of human behavior \& cognition, incl.~motivation, decision-making \& memory processes} 
+  %\cvachievement{\faUserGraduate}{Researcher \& Project Leader}{High-impact publications in top-tier scientific journals with \textasciitilde{}100 citations, project management, funding acquisition}
+  %\cvachievement{\faChalkboardTeacher}{Speaker \& Teacher}{20+ presentations, talks \& workshops with 1000+ attendees at international conferences \& renowned research institutions}
+  %\cvachievement{\faSlideshare}{Supervisor \& Consultant}{Supervised aspiring researchers at varying career levels \& from diverse technical backgrounds}
 
  \medskip
-
-  % EXPERIENCE section
+  
   \cvsection{Experience}
-  % First entry
-  \cvevent{Postdoctoral Research Scientist}{University of Hamburg\\Max Planck Institute for Human Development, Berlin}{XX/2023 -- present}{Hamburg \& Berlin, Germany}
+  \cvevent{Postdoctoral Research Scientist}{University of Hamburg\\Max Planck Institute for Human Development, Berlin}{02/2023 -- present}{Hamburg \& Berlin, Germany}
+  \begin{itemize}[itemsep=5pt]
+    \item Using \textbf{reinforcement learning algorithms} to model human choices
+    \item Advanced statistics \& data visualization in \textbf{R}
+    \item \textbf{Data management lead} in one international project (6 members)
+    \item \textbf{Documentation, communication \& education} via presentations, workshops, wikis \& scientific publications
+    %\item \textbf{Research:} Multivariate pattern analysis of brain imaging data, computational modeling \& analysis of human behavior \& cognition to investigate fast memory reactivation in humans
+    %\item \textbf{Skills:} Pattern classification, machine learning \& data analysis in Python (e.g., scikit-learn, pandas, numpy), computational modeling, advanced statistics \& data visualization in R, version-controlled code \& data management using Git \& DataLad, high performance computing (HPC), Docker, CI/CD on GitHub \& GitLab
+    % Funding Acquisition
+    % Git Workshop
+
+    %\item \textbf{Teaching:} Full-semester \href{https://lennartwittkuhn.com/version-control-course-uhh-ws23/}{course on ``Version control of code and data using Git and DataLad''} for MSc Psychology students
+    %\item \textbf{Lab Management:} Project Administration, , Supervision of Research Assistants,
+  \end{itemize}
+
+  \divider{}
+
+  \cvevent{Doctoral Researcher}{Max Planck Institute for Human Development, Berlin}{11/2017 -- 12/2022}{Berlin, Germany}
   \begin{itemize}[itemsep=5pt]
     \item Machine learning, pattern classification \& data analysis in \textbf{Python}
     \item Advanced statistics \& data visualization in \textbf{R}
-    \item Using \textbf{reinforcement learning algorithms} to model human choices
-    \item \textbf{Documentation, communication \& education} via presentations, workshops, wikis \& scientific publications
-    \item \textbf{Lead of data management} in international project (six members)
-  \end{itemize}
-
-  % Dotted line divider
-  \divider{}
-
-  % Second entry
-  \cvevent{Doctoral Researcher}{Max Planck Institute for Human Development, Berlin}{XX/2017 -- XX/2022}{Berlin, Germany}
-  \begin{itemize}[itemsep=5pt]
-    \item \textbf{Dissertation:} \href{http://dx.doi.org/10.17169/refubium-39372}{``How aging shapes neural representations of continuous spaces''}
+    \item \textbf{Self-guided, long-term project management} for dissertation: \href{http://dx.doi.org/10.17169/refubium-39372}{``How aging shapes neural representations of continuous spaces''}
     \item Member of the \href{https://www.imprs-life.mpg.de/}{\textbf{International Max Planck Research School LIFE}} (Germany, USA \& Switzerland) + 1-year term as fellow speaker
   \end{itemize}
 
-  % Add additional entry with
   %\divider{}
-  %\cvevent{TITLE}{EMPLOYER}{STARTDATE -- ENDDATE}{LOCATION}
-  %\begin{itemize}[itemsep=5pt]
-    %\item DESCRIPTION
-  %\end{itemize}
+
+  %\textbf{Previously:} Research and Teaching Assistant (Ruhr-University, Bochum, Germany)
+
+% \cvsection{A Day of My Life}
+
+% Adapted from @Jake's answer from http://tex.stackexchange.com/a/82729/226
+% \wheelchart{outer radius}{inner radius}{
+% comma-separated list of value/text width/color/detail}
+% \wheelchart{1.5cm}{0.5cm}{%
+%   6/8em/accent!30/{Sleep,\\beautiful sleep},
+%   3/8em/accent!40/Hopeful novelist by night,
+%   8/8em/accent!60/Daytime job,
+%   2/10em/accent/Sports and relaxation,
+%   5/6em/accent!20/Spending time with family
+% }
+
 
 \smallskip
 
@@ -175,14 +221,12 @@
 %% page if the content is too long.
 \switchcolumn{}
 
-% SKILLS section
 \cvsection{Skills}
 
-% Subsection PROGRAMMING LANGUAGES
-% headline
+% Optimization using nlopt
+
 \bfseries\textcolor{emphasis}{Programming Languages}
 \vspace*{-1.2em}
-% Two columns for advanced and basic programming languages (nested paracols not allowed)
 \begin{multicols}{2}
 \textbf{\underline{Advanced:}}
 \vspace{0.3em}
@@ -199,24 +243,30 @@
     \item \textnormal{Julia}
 \end{itemize}
 \end{multicols}
-
-% For a "tag"-style of individual items you can use
-%\cvtag{\href{HYPERLINK}{SYMBOL{}TITLE}}
-
+%\cvtag{\href{https://www.python.org/}{\faPython{}Python}}
+%\cvtag{\href{https://www.r-project.org/}{\faRProject{}}}
+%\cvtag{\href{https://en.wikipedia.org/wiki/Bash_(Unix_shell)}{\faTerminal{}Bash}}
+%\cvtag{\href{https://www.mathworks.com/products/matlab.html}{\faMountain{}MATLAB}}
 \vspace*{-1.5em}
-% Dotted line divider
 \divider{}
 
-% Subsection TOOLS
-% Headline
 \bfseries\textcolor{emphasis}{Tools}\\
 \vspace{0.8em}
-% Altered itemize for better spacing
+%\cvtag{\href{https://git-scm.com/}{\faGit*{}Git}}
+%\cvtag{\href{https://www.docker.com/}{\faDocker{}Docker}}
+%\cvtag{\href{https://about.gitlab.com/topics/ci-cd/}{\faCodeBranch{}CI/CD}}\\
+%\cvtag{\href{https://scikit-learn.org/stable/}{\faLayerGroup{}Machine Learning}}
+%\cvtag{\href{https://jupyter.org/}{\faRocket{}Jupyter}}\\
+%\cvtag{\href{https://en.wikipedia.org/wiki/High-performance_computing}{\faServer{}HPC}}
+%\cvtag{\href{https://www.datalad.org}{\faDatabase{}DataLad}}
+%\cvtag{\href{https://aws.amazon.com/s3/}{\faAmazon{}S3}}\\
+%\cvtag{\href{https://www.markdownguide.org/}{\faMarkdown{}Markdown}}
+%\cvtag{\href{https://www.latex-project.org/}{\LaTeX{}}}
+%\cvtag{\href{https://www.latex-project.org/}{\faMicrosoft{} MS Office}}
 \begin{itemize}[label={}, left=0pt, itemsep=5pt, topsep=0pt]
     \item \faLayerGroup{}\ Machine Learning \textnormal{(scikit-learn)}
     \item \faBullseye{}\ Optimization \textnormal{(NLopt, nloptr \& optimx)}
     \item \faBoxes{}\ Core libraries \textnormal{(among others)}
-    % Second itemize layer for nested bulletpoints
     \begin{itemize}[left=7pt, itemsep=2pt, topsep=2pt]
         \item Python: \textnormal{scikit-learn, pandas, numpy}
         \item R: \textnormal{data.table, tidyr, ggplot2}
@@ -227,12 +277,8 @@
     \item \faBook{}\ Codebooks \textnormal{(Quarto, Jupyter, etc.)}
     \item \faPencil*{}\ MS Office, Markdown \& LaTeX
 \end{itemize}
-
-% Dotted line divider
+%\vspace{0.5em}
 \divider{}
-
-% Subsection LANGUAGES
-% Headline
 \bfseries\textcolor{emphasis}{Languages}
 \vspace{1ex}
 \begin{itemize}
@@ -242,28 +288,49 @@
 \vspace{0.5ex}
 
 \medskip
-
-% EDUCATION section
 \cvsection{Education}
-\cvedu{Dr. rer. nat.\ / Ph.D.}{Max Planck Institute for Human Development \& Free University, Berlin, Germany}{XX/XXXX~--~XX/XXXX}{Grade: XXX}
-\cvedu{M.Sc.\ Cognitive Neuroscience}{Ruhr University, Bochum, Germany}{XX/XXXX~--~XX/XXXX}{Grade: X.X}
-\cvedu{B.Sc.\ Psychology}{Ruhr University, Bochum, Germany}{XX/XXXX~--~XX/XXXX}{Grade: X.X}
-% Add new entry with
-%\cvedu{EDUCATION}{INSTITUTION}{STARTDATE~--~ENDDATE}{Grade: GRADE}
+\cvedu{Dr. rer. nat.\ / Ph.D.}{Max Planck Institute for Human Development \& Free University, Berlin, Germany}{11/2017~--~12/2022}{}
+\cvedu{M.Sc.\ Cognitive Neuroscience}{Ruhr University, Bochum, Germany}{10/2014~--~03/2017}{Grade: 1.2 (very good)}
+\cvedu{B.Sc.\ Psychology}{Ruhr University, Bochum, Germany}{10/2011~--~07/2014}{Grade: 1.3 (very good)}
 
+%\cvsection{Strengths}
+%\cvtag{\faFlagCheckered{}Driven}
+%\cvtag{\faListOl{}Organized}
+%\cvtag{\faPalette{}Creative}
+%\cvtag{\faUserPlus{}Team Player}
+%\cvtag{\faSpa{}Conscientious}
+
+%% Yeah I didn't spend too much time making all the
+%% spacing consistent... sorry. Use \smallskip, \medskip,
+%% \bigskip, \vspace etc to make adjustments.
 \medskip
 
-% Close double column layout
 \end{paracol}
 
-% REFERENCES section
 \cvsection{References}
+
 % Three column layout
+% Set equal spacing among the three columns
+%\columnratio{0.333}
+% Add vertical lines as dividers
+%\setlength{\columnseprule}{0.5pt}
+% Start columns
+%\begin{paracol}{3}
+  % Actvate first column
+  %\switchcolumn[0]
+  % Add reference
+  %\cvref{Dr. Place Holder}{Lead of Placeholding\par\hspace{0.5em}Places Holding Inc.\par\hspace{0.5em}Holdings Place, PH}{\href{mailto:placeholder@mail.com}{placeholder@mail.com}}
+  %\switchcolumn[1]
+  %\cvref{Dr. Place Holder}{Lead of Placeholding\par\hspace{0.5em}Places Holding Inc.\par\hspace{0.5em}Holdings Place, PH}{\href{mailto:placeholder@mail.com}{placeholder@mail.com}}
+  %\switchcolumn[2]
+  %\cvref{Dr. Place Holder}{Lead of Placeholding\par\hspace{0.5em}Places Holding Inc.\par\hspace{0.5em}Holdings Place, PH}{\href{mailto:placeholder@mail.com}{placeholder@mail.com}}
+% End column layout
+%\end{paracol}
+
 \vspace{-20pt}
 \begin{center}
-  % Adjust the minipage-width to the smallest value possible without producing line breaks so the entries have an equal distance
-    \begin{minipage}[t][10pt]{0.23\textwidth}
-        \cvref{Dr. Place Holder}{Lead of Placeholding\par\hspace{0.5em}PL \& Ace Holding Inc.\par\hspace{0.5em}Holdings Place, PH}{\href{mailto:placeholder@mail.com}{placeholder@mail.com}}
+    \begin{minipage}[t][10pt]{0.31\textwidth}
+        \cvref{Prof.~Dr.~Nicolas Schuck}{Research Group Lead\par\hspace{0.5em}University of Hamburg\par\hspace{0.5em}Hamburg}{\href{mailto:nicolas.schuck@uni-hamburg.de}{nicolas.schuck@uni-hamburg.de}}
     \end{minipage}
     \hfill
     \begin{minipage}[t][10pt]{0.23\textwidth}
