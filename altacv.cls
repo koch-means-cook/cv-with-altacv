@@ -148,7 +148,7 @@
 %% v1.6: Use accsupp so that when copying/pasting the icon from PDF to a text
 %%       file, the icon name is pasted
 %% v1.7: Some tweaks/corrections so that accsupp is for icons only
-%% v1.7.1: Bugfix to support some symbol commands e.g. academicons commands 
+%% v1.7.1: Bugfix to support some symbol commands e.g. academicons commands
 \ExplSyntaxOn
 \NewDocumentCommand{\printinfo}{m m o}{%
   \IfNoValueTF{#3}{%
@@ -314,7 +314,7 @@
 }
 
 \newcommand{\cvedu}[4]{%
-  {\large\color{emphasis}#1\par}
+  {\large\color{emphasis}\textnormal{#1}\par}
   \smallskip\normalsize
   \ifstrequal{#2}{}{}{
   \textbf{\color{accent}#2}\par
@@ -329,7 +329,7 @@
       {\BeginAccSupp{method=pdfstringdef,ActualText={\locationname:}}\cvAwardMarker\EndAccSupp{}%
         ~#4}%
     }}\par
-  \medskip\normalsize
+  \bigskip\normalsize
 }
 
 % v1.7: adds accsupp for the icon as well
@@ -421,8 +421,8 @@
   %\item[\small\normalfont\mailaddresssymbol] #2
   \item[\small\normalfont\faSuitcase] #2
   \item[\small\normalfont\emailsymbol] #3
-  
-  
+
+
   \end{description}
 %   \medskip
 }
